@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: recovery-control-plane
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: REFRESH_TOKEN_EXPIRE_DAYS
+        value: "7"
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "60"
+      - key: ALLOWED_IPS
+        value: "*"
+    autoDeploy: true
