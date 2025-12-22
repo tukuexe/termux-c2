@@ -1,12 +1,23 @@
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
+
+# Database
 pymongo==4.5.0
+
+# Auth & Security
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
-python-multipart==0.0.6
 cryptography==41.0.7
+
+# Forms & Uploads
+python-multipart==0.0.6
 aiofiles==23.2.1
+
+# Redis (optional but safe)
 redis==5.0.1
+
+# Environment variables
 python-dotenv==1.0.0
-pydantic==2.5.0
-pydantic-settings==2.1.0
+
+# Pydantic (NO Rust, Render-safe)
+pydantic==1.10.13
