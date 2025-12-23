@@ -1,8 +1,9 @@
 services:
   - type: web
     name: recovery-control-plane
-    env: python
-    pythonVersion: 3.11.9   # <<< THIS IS THE FIX
+    runtime: python          # ✅ MUST be runtime, NOT env
+    pythonVersion: 3.11.9    # ✅ NOW Render will respect this
+
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
 
