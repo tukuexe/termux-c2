@@ -2,8 +2,10 @@ services:
   - type: web
     name: recovery-control-plane
     env: python
+    pythonVersion: 3.11.9   # <<< THIS IS THE FIX
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+
     envVars:
       - key: MONGODB_URI
         sync: false
@@ -21,4 +23,5 @@ services:
         value: "60"
       - key: ALLOWED_IPS
         value: "*"
+
     autoDeploy: true
